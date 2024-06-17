@@ -107,10 +107,12 @@ wifi = adafruit_esp32spi_wifimanager.ESPSPI_WiFiManager(esp, secrets, status_lig
 
 ## Connect to WiFi
 print(yellow("Connecting to WiFi..."))
+w.feed()
 wifi.connect()
 print(yellow("Connected!"))
 
 print(yellow("Connected to: [" + str(esp.ssid, "utf-8") + "]\tRSSI:" + str(esp.rssi)))
+w.feed()
 print()
 
 # Initialize a requests object with a socket and esp32spi interface
@@ -120,7 +122,7 @@ requests = adafruit_requests.Session(pool, ssl_context)
 
 
 # aprs auth packet
-rawauthpacket = f"user {config.call} pass {config.passcode} vers {VERSION} {RELEASE} filter t/m/{config.call}/{config.msgDistance}\n"
+rawauthpacket = f"user {config.call} pass {config.passcode} vers {VERSION} {RELEASE}\n"
 
 now = None
 while now is None:
@@ -355,7 +357,7 @@ async def loraRunner(loop):
     )
     rfm9x.tx_power = 5
 
-    lastBeacon = time.monotonic() - 900
+    time.monotonic() - 900
 
     while True:
         await asyncio.sleep(0)
