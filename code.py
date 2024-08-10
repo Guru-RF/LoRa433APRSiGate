@@ -95,7 +95,7 @@ esp = adafruit_esp32spi.ESP_SPIcontrol(spi, esp32_cs, esp32_ready, esp32_reset)
 
 if esp.status == adafruit_esp32spi.WL_IDLE_STATUS:
     print(yellow("ESP32 found and in idle mode"))
-print(yellow("Firmware version: " + (esp.firmware_version).decode("utf-8")))
+print(yellow("Firmware version: " + (esp.firmware_version)))
 print(yellow("MAC addr: " + str([hex(i) for i in esp.MAC_address])))
 
 RED_LED = PWMOut.PWMOut(esp, 25)
@@ -110,8 +110,13 @@ print(yellow("Connecting to WiFi..."))
 w.feed()
 wifi.connect()
 print(yellow("Connected!"))
+apInfo = esp.ap_info
 
-print(yellow("Connected to: [" + str(esp.ssid, "utf-8") + "]\tRSSI:" + str(esp.rssi)))
+print(
+    yellow(
+        "Connected to: [" + str(apInfo.ssid, "utf-8") + "]\tRSSI:" + str(apInfo.rssi)
+    )
+)
 w.feed()
 print()
 

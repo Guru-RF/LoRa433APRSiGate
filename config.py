@@ -5,13 +5,13 @@
 syslogHost = "logs4.papertrailapp.com"
 syslogPort = 24262
 # APRS
-call = ""
+call = "ON6URE-5"
 aprs_host = "belgium.aprs2.net"
 aprs_port = 14580
-passcode = ""  # https://apps.magicbug.co.uk/passcode/
-latitude = 52.1517227
-longitude = 3.7649157
-altitude = 46  # in meters
+passcode = "22716"  # https://apps.magicbug.co.uk/passcode/
+latitude = 51.150000
+longitude = 2.770000
+altitude = 5  # in meters
 comment = "https://rf.guru"
 # iGate symbol
 symbol = "R&"
