@@ -109,6 +109,7 @@ wifi = adafruit_esp32spi_wifimanager.ESPSPI_WiFiManager(esp, secrets, status_lig
 print(yellow("Connecting to WiFi..."))
 w.feed()
 wifi.connect()
+w.feed()
 print(yellow("Connected!"))
 apInfo = esp.ap_info
 
